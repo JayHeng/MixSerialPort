@@ -3,16 +3,19 @@
 import sys
 import os
 import time
-from PyQt6.QtCore import Qt
-from PyQt6.QtWidgets import QApplication, QMainWindow
+from PyQt5.Qt import *
+from PyQt5.QtWidgets import *
+from PyQt5.QtCore import *
+from PyQt5.QtGui import *
+sys.path.append(os.path.abspath(".."))
 from win import mixSerialWin
 
 class mixSerialMain(QMainWindow, mixSerialWin.Ui_MixSerialPort):
 
     def __init__(self, parent=None):
         super(mixSerialMain, self).__init__(parent)
-        self._register_callbacks()
         self.setupUi(self)
+        self._register_callbacks()
         self.comboBox_baud.lineEdit().setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.comboBox_dataBits.lineEdit().setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.comboBox_stopBits.lineEdit().setAlignment(Qt.AlignmentFlag.AlignCenter)
